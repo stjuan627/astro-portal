@@ -1,3 +1,9 @@
+---
+import { menuItems } from '../data/menuItems';
+
+console.debug('[Sidebar] Rendering menu items:', menuItems.length);
+---
+
 <div class="drawer lg:drawer-open">
   <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
   
@@ -10,10 +16,10 @@
   </div>
 
   <!-- Sidebar content -->
-  <div class="drawer-side z-40">
+  <div class="drawer-side z-[100] lg:z-0">
     <label for="sidebar-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
     
-    <div class="menu p-4 w-80 min-h-full bg-base-200 text-base-content pt-16 lg:pt-4">
+    <div class="menu p-4 w-64 min-h-full bg-base-200 text-base-content">
       <!-- Close button for mobile -->
       <div class="lg:hidden flex justify-between items-center mb-4">
         <span class="text-xl font-bold">Menu</span>
@@ -21,33 +27,17 @@
           <i class="ph ph-x text-2xl"></i>
         </label>
       </div>
-      
+
       <!-- Menu items -->
       <ul class="space-y-2">
-        <li>
-          <a href="/trending" class="flex items-center gap-3 p-2 hover:bg-base-300 rounded-lg">
-            <i class="ph ph-trend-up text-xl"></i>
-            <span>Trending Games</span>
-          </a>
-        </li>
-        <li>
-          <a href="/hot" class="flex items-center gap-3 p-2 hover:bg-base-300 rounded-lg">
-            <i class="ph ph-fire text-xl"></i>
-            <span>Hot Games</span>
-          </a>
-        </li>
-        <li>
-          <a href="/driving" class="flex items-center gap-3 p-2 hover:bg-base-300 rounded-lg">
-            <i class="ph ph-car text-xl"></i>
-            <span>Driving Games</span>
-          </a>
-        </li>
-        <li>
-          <a href="/racing" class="flex items-center gap-3 p-2 hover:bg-base-300 rounded-lg">
-            <i class="ph ph-flag-checkered text-xl"></i>
-            <span>Racing Games</span>
-          </a>
-        </li>
+        {menuItems.map(item => (
+          <li>
+            <a href={item.href} class="flex items-center gap-3 p-2 hover:bg-base-300 rounded-lg">
+              <i class={`${item.icon} text-xl`}></i>
+              <span>{item.label}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </div>
@@ -63,4 +53,3 @@
 </script>
 
 <!-- Import Phosphor Icons -->
-<script src="https://unpkg.com/@phosphor-icons/web"></script> 

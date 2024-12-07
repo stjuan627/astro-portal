@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { relatedGames } from '../data/relatedGames';
+
+console.debug('[Index] Loading related games:', relatedGames.length);
 ---
 
 <Layout title="Drive Mad - Mini Game Portal">
@@ -12,4 +16,20 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </div>
+
+  <section class="container mx-auto px-4 py-12">
+    <h2 class="mb-8 text-2xl font-bold">相关游戏推荐</h2>
+    
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      {relatedGames.map(game => (
+        <Card
+          title={game.title}
+          imageUrl={game.imageUrl}
+          rating={game.rating}
+          badge={game.badge}
+          href={`/games/${game.id}`}
+        />
+      ))}
+    </div>
+  </section>
 </Layout>
