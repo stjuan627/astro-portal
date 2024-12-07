@@ -1,0 +1,58 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-base-200 text-base-content pt-8 pb-4">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row flex-wrap justify-between gap-8">
+      <!-- Logo & Description -->
+      <div class="flex flex-col items-center lg:items-start gap-2 lg:max-w-xs">
+        <a href="/" class="text-2xl font-bold">DriveMad</a>
+        <p class="text-sm opacity-80 text-center lg:text-left">
+          Your ultimate destination for the best driving and racing game experience.
+        </p>
+      </div>
+
+      <!-- Links Container -->
+      <div class="flex flex-col md:flex-row flex-wrap justify-center lg:justify-end gap-8 lg:gap-16 flex-1">
+        <!-- Featured Links -->
+        <div class="flex flex-col items-center md:items-start gap-2">
+          <h3 class="font-bold mb-2">Featured</h3>
+          <a href="/trending" class="link link-hover text-sm">Trending Games</a>
+          <a href="/hot" class="link link-hover text-sm">Hot Games</a>
+          <a href="/driving" class="link link-hover text-sm">Driving Games</a>
+          <a href="/racing" class="link link-hover text-sm">Racing Games</a>
+        </div>
+
+        <!-- Legal Links -->
+        <div class="flex flex-col items-center md:items-start gap-2">
+          <h3 class="font-bold mb-2">Legal</h3>
+          <a href="/terms" class="link link-hover text-sm">Terms of Service</a>
+          <a href="/privacy" class="link link-hover text-sm">Privacy Policy</a>
+          <a href="/dmca" class="link link-hover text-sm">DMCA</a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex flex-col items-center md:items-start gap-2">
+          <h3 class="font-bold mb-2">Follow Us</h3>
+          <div class="flex gap-4">
+            <a href="https://github.com/drivemad" target="_blank" rel="noopener noreferrer" 
+               class="btn btn-ghost btn-circle">
+              <i class="ph ph-github-logo text-2xl"></i>
+            </a>
+            <a href="https://youtube.com/@drivemad" target="_blank" rel="noopener noreferrer"
+               class="btn btn-ghost btn-circle">
+              <i class="ph ph-youtube-logo text-2xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="divider mt-8"></div>
+    <div class="text-center text-sm opacity-60">
+      <p>&copy; {currentYear} DriveMad. All rights reserved.</p>
+    </div>
+  </div>
+</footer> 

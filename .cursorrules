@@ -1,0 +1,4 @@
+Write resuable components
+Use Astro 5
+Use daisyUI to compose UI and fine tune with tailwind css
+Add debug log in key action like login, API request, dynamic asset loading

@@ -1,0 +1,53 @@
+<header class="navbar bg-base-100 border-b border-base-200 sticky top-0 z-50">
+  <div class="container mx-auto px-4">
+    <!-- Mobile: Hamburger + Logo + Theme -->
+    <div class="lg:hidden navbar-start w-full flex justify-between">
+      <label for="sidebar-drawer" class="btn btn-ghost btn-circle drawer-button">
+        <i class="ph ph-list text-2xl"></i>
+      </label>
+      
+      <a href="/" class="flex items-center gap-2 text-xl font-bold">
+        <i class="ph ph-steering-wheel text-primary text-2xl"></i>
+        DriveMad
+      </a>
+
+      <label class="swap swap-rotate btn btn-ghost btn-circle">
+        <input type="checkbox" class="theme-controller" value="dark" />
+        <i class="ph ph-sun swap-on text-2xl"></i>
+        <i class="ph ph-moon swap-off text-2xl"></i>
+      </label>
+    </div>
+
+    <!-- Desktop: Logo + Theme -->
+    <div class="hidden lg:flex w-full justify-between">
+      <a href="/" class="flex items-center gap-2 text-xl font-bold">
+        <i class="ph ph-steering-wheel text-primary text-2xl"></i>
+        DriveMad
+      </a>
+
+      <label class="swap swap-rotate btn btn-ghost btn-circle">
+        <input type="checkbox" class="theme-controller" value="dark" />
+        <i class="ph ph-sun swap-on text-2xl"></i>
+        <i class="ph ph-moon swap-off text-2xl"></i>
+      </label>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Debug logging for theme changes
+  const themeControllers = document.querySelectorAll('.theme-controller') as NodeListOf<HTMLInputElement>;
+  
+  themeControllers.forEach(controller => {
+    controller.addEventListener('change', (e) => {
+      const isDark = (e.target as HTMLInputElement).checked;
+      console.log(`Theme switched to ${isDark ? 'dark' : 'light'} mode`);
+      // 同步另一个主题切换器的状态
+      themeControllers.forEach(otherController => {
+        if (otherController !== e.target) {
+          otherController.checked = isDark;
+        }
+      });
+    });
+  });
+</script> 
