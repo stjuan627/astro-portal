@@ -1,7 +1,7 @@
 ---
-import { menuItems } from '../data/menuItems';
+import { mainNavItems } from '../data/navigation';
 
-console.debug('[Sidebar] Rendering menu items:', menuItems.length);
+console.debug('[Sidebar] Rendering menu items:', mainNavItems.length);
 ---
 
 <div class="drawer lg:drawer-open">
@@ -30,7 +30,7 @@ console.debug('[Sidebar] Rendering menu items:', menuItems.length);
 
       <!-- Menu items -->
       <ul class="space-y-2">
-        {menuItems.map(item => (
+        {mainNavItems.map(item => (
           <li>
             <a href={item.href} class="flex items-center gap-3 p-2 hover:bg-base-300 rounded-lg">
               <i class={`${item.icon} text-xl`}></i>

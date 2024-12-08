@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+import { footerNavGroups } from '../data/navigation';
 ---
 
 <footer class="border-t border-base-200 text-base-content pt-8 pb-4">
@@ -15,22 +16,14 @@ const currentYear = new Date().getFullYear();
 
       <!-- Links Container -->
       <div class="flex flex-col md:flex-row flex-wrap justify-around lg:justify-end gap-8 lg:gap-16 flex-1 text-xs sm:text-sm">
-        <!-- Featured Links -->
-        <div class="flex flex-col items-center md:items-start gap-2">
-          <h3 class="font-bold mb-2">Featured</h3>
-          <a href="/trending" class="link link-hover text-sm">Trending Games</a>
-          <a href="/hot" class="link link-hover text-sm">Hot Games</a>
-          <a href="/driving" class="link link-hover text-sm">Driving Games</a>
-          <a href="/racing" class="link link-hover text-sm">Racing Games</a>
-        </div>
-
-        <!-- Legal Links -->
-        <div class="flex flex-col items-center md:items-start gap-2">
-          <h3 class="font-bold mb-2">Legal</h3>
-          <a href="/terms" class="link link-hover text-sm">Terms of Service</a>
-          <a href="/privacy" class="link link-hover text-sm">Privacy Policy</a>
-          <a href="/dmca" class="link link-hover text-sm">DMCA</a>
-        </div>
+        {footerNavGroups.map(group => (
+          <div class="flex flex-col items-center md:items-start gap-2">
+            <h3 class="font-bold mb-2">{group.title}</h3>
+            {group.items.map(item => (
+              <a href={item.href} class="link link-hover text-sm">{item.label}</a>
+            ))}
+          </div>
+        ))}
 
         <!-- Social Links -->
         <div class="flex flex-col items-center md:items-start gap-2">
