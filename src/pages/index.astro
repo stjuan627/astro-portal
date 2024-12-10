@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import GameFrame from '../components/GameFrame.astro';
 import { relatedGames } from '../data/relatedGames';
+import RelatedGameVideos from '../components/RelatedGameVideos.astro';
+import { mockVideos } from '../mocks/videoData';
 
 console.debug('[Index] Loading related games:', relatedGames.length);
 ---
@@ -10,8 +12,8 @@ console.debug('[Index] Loading related games:', relatedGames.length);
 <Layout title="Drive Mad - Mini Game Portal">
   <div class="space-y-8">
     <!-- Hero/Game Section -->
-    <div class="container">
-      <GameFrame 
+    <div class="container px-0">
+      <GameFrame
         gameUrl="https://monstertracks.github.io/file/"
         title="Drive Mad"
         coverImage="https://drive-mad.org/cache/data/image/game/drive-mad-game-m160x96.jpg"
@@ -34,5 +36,15 @@ console.debug('[Index] Loading related games:', relatedGames.length);
         ))}
       </div>
     </section>
+
+    <!-- Related Game Videos Section -->
+    <section class="container">
+      <h2 class="mb-8 text-2xl font-bold">相关游戏视频</h2>
+      <RelatedGameVideos
+        gameTitle="Drive Mad"
+        videos={mockVideos}
+      />
+    </section>
+
   </div>
 </Layout>

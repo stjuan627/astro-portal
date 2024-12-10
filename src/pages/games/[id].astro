@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GameFrame from '../../components/GameFrame.astro';
+import { relatedGames } from '../../data/relatedGames';
+import RelatedGameVideos from '../../components/RelatedGameVideos.astro';
+import { mockVideos } from '../../mocks/videoData';
+
+import { getCollection, render } from 'astro:content';
+import Card from '../../components/Card.astro';
+
+
+export async function getStaticPaths() {
+    const games = await getCollection('game');
+    return games.map((game) => ({
+        params: { id: game.id },
+        props: { game },
+    })) as { params: { id: string }, props: { game: any } }[];
+}
+
+const { game } = Astro.props;
+const { Content, headings } = await render(game);
+---
+
+<Layout title={game.data.title}>
+  <div class="space-y-8">
+    <!-- Hero/Game Section -->
+    <div class="container">
+      <GameFrame
+        gameUrl={game.data.game.url}
+        title={game.data.game.title}
+        coverImage={game.data.game.image}
+        description={game.data.game.tagline}
+      />
+    </div>
+
+    <div class="flex flex-col space-y-8">
+
+      <section class="container order-5">
+
+        <article class="prose max-w-none">
+          <Content />
+        </article>
+      </section>
+
+      <!-- Related Games Section -->
+      <section class="container">
+        <h2 class="mb-8 text-2xl font-bold">相关游戏推荐</h2>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {relatedGames.map(game => (
+            <Card
+              title={game.title}
+              imageUrl={game.imageUrl}
+              rating={game.rating}
+              badge={game.badge}
+              href={`/games/${game.id}`}
+            />
+          ))}
+        </div>
+      </section>
+
+      <!-- Related Game Videos Section -->
+      <section class="container">
+        <h2 class="mb-8 text-2xl font-bold">相关游戏视频</h2>
+        <RelatedGameVideos
+          gameTitle="Drive Mad"
+          videos={mockVideos}
+        />
+      </section>
+
+    </div>
+
+  </div>
+</Layout>
