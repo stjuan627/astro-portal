@@ -15,20 +15,20 @@ const { gameTitle, videos } = Astro.props;
 // hqdefault.jpg (480x360)
 // sddefault.jpg (640x480)
 // maxresdefault.jpg (1280x720)
-const getThumbnailUrl = (videoId: string) => 
+const getThumbnailUrl = (videoId: string) =>
   `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 ---
 
 <section class="my-8" aria-label={`${gameTitle} related videos`}>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {videos.map(video => (
-      <article class="card bg-base-200 shadow-xl overflow-hidden" itemscope itemtype="http://schema.org/VideoObject">
-        <div class="video-container relative">
-          <div 
+      <article class="card bg-base-100 shadow-xl overflow-hidden rounded-md" itemscope itemtype="http://schema.org/VideoObject">
+        <div class="video-container aspect-video relative">
+          <div
             class="video-placeholder cursor-pointer relative pt-[56.25%]"
             data-video-id={video.id}
           >
-            <img 
+            <img
               src={getThumbnailUrl(video.id)}
               alt={`${video.title} - ${gameTitle} gameplay video`}
               class="absolute top-0 left-0 w-full h-full object-cover"
@@ -57,13 +57,13 @@ const getThumbnailUrl = (videoId: string) =>
 <script>
   function initializeVideoPlaceholders() {
     const placeholders = document.querySelectorAll('.video-placeholder');
-    
+
     placeholders.forEach(placeholder => {
       placeholder.addEventListener('click', function() {
         const videoId = this.getAttribute('data-video-id');
         const container = this.closest('.video-container');
         const embedContainer = container?.querySelector('.youtube-embed');
-        
+
         if (videoId && embedContainer) {
           const iframe = document.createElement('iframe');
           iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
@@ -71,11 +71,11 @@ const getThumbnailUrl = (videoId: string) =>
           iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
           iframe.allowFullscreen = true;
           iframe.className = "absolute top-0 left-0 w-full h-full";
-          
+
           embedContainer.classList.remove('hidden');
           embedContainer.appendChild(iframe);
           this.style.display = 'none';
-          
+
           console.debug(`Loaded YouTube video: ${videoId}`);
         }
       });
@@ -84,9 +84,3 @@ const getThumbnailUrl = (videoId: string) =>
 
   document.addEventListener('astro:page-load', initializeVideoPlaceholders);
 </script>
-
-<style>
-  .video-container {
-    aspect-ratio: 16/9;
-  }
-</style> 

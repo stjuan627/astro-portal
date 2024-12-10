@@ -33,25 +33,25 @@ export const mainNavItems: NavItem[] = [
 ];
 
 export const footerNavGroups: NavGroup[] = [
+  // {
+  //   title: 'Featured',
+  //   items: mainNavItems.map(({ href, label }) => ({ href, label }))
+  // },
   {
-    title: 'Featured',
-    items: mainNavItems.map(({ href, label }) => ({ href, label }))
-  },
-  {
-    title: 'Legal',
+    // title: 'Legal',
     items: [
       {
-        href: '/terms',
+        href: '#',
         label: 'Terms of Service'
       },
       {
-        href: '/privacy',
+        href: '#',
         label: 'Privacy Policy'
       },
       {
-        href: '/dmca',
+        href: '#',
         label: 'DMCA'
       }
     ]
   }
-]; 
+];

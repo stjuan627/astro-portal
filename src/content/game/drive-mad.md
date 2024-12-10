@@ -5,7 +5,7 @@ game:
   title: 'Drive Mad'
   tagline: 'The Ultimate Driving Game Experience'
   image: 'https://drive-mad.org/cache/data/image/game/drive-mad-game-m160x96.jpg'
-  url: 'https://www.yoosfuhl.com/game/drivemad/index.html'
+  url: 'https://drive-mad-online.github.io/file/'
 ---
 
 # Drive Mad: The Ultimate Driving Game Experience
