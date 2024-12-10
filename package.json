@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/post-build.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -13,9 +13,11 @@
     "@phosphor-icons/web": "^2.1.1",
     "@tailwindcss/typography": "^0.5.15",
     "astro": "^5.0.3",
+    "sharp": "^0.33.5",
     "tailwindcss": "^3.4.16"
   },
   "devDependencies": {
-    "daisyui": "^4.12.14"
+    "daisyui": "^4.12.14",
+    "node-html-parser": "^6.1.13"
   }
 }
