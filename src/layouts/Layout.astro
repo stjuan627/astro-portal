@@ -1,49 +1,66 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import { getImage, Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 import Header from '../components/Header.astro';
-import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
 import '@phosphor-icons/web/regular';
 
 interface Props {
-	title: string;
+  title: string;
 }
+
+const favicon = await getImage({ src: logo, width: 64 });
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="min-h-screen">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<ViewTransitions />
-	</head>
-	<body class="min-h-screen flex flex-col">
-		<Header />
-		<div class="flex-1">
-			<Sidebar>
-				<slot />
-			</Sidebar>
-		</div>
-		<Footer />
-	</body>
+<html lang="en" class="min-h-screen" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href={favicon} type="image/x-icon">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap">
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header boxed={true} />
+    <div class="flex-1 py-4">
+      <slot />
+    </div>
+    <Footer />
+  </body>
 </html>
 
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* Dark mode styles */
+  html[data-theme="dark"] {
+    background: #000;
+  }
+
+  html[data-theme="dark"] .game-frame-overlay {
+    background: rgba(0, 0, 0, 0.95);
+  }
 </style>

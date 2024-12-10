@@ -1,14 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+const { boxed = false } = Astro.props;
+const containerClass = boxed ? 'container mx-auto' : 'w-full';
+---
+
 <header class="navbar bg-base-100 border-b border-base-200 sticky top-0 z-40">
-  <div class="container mx-auto lg:px-4">
+  <div class={containerClass + ' lg:px-4'}>
     <!-- Mobile: Hamburger + Logo + Theme -->
     <div class="lg:hidden navbar-start w-full flex justify-between">
-      <label for="sidebar-drawer" class="btn btn-ghost btn-circle drawer-button">
-        <i class="ph ph-list text-2xl"></i>
-      </label>
-      
       <a href="/" class="flex items-center gap-2 text-xl font-bold">
-        <i class="ph ph-steering-wheel text-primary text-2xl"></i>
-        DriveMad
+        <Image src={logo} alt="DriveMad" class="size-12 rounded-md" />
+        <div class="leading-none">Drive <span class="text-[#ff950b] block font-bold">Mad</span></div>
       </a>
 
       <label class="swap swap-rotate btn btn-ghost btn-circle">
@@ -21,8 +25,8 @@
     <!-- Desktop: Logo + Theme -->
     <div class="hidden lg:flex w-full justify-between">
       <a href="/" class="flex items-center gap-2 text-xl font-bold">
-        <i class="ph ph-steering-wheel text-primary text-2xl"></i>
-        DriveMad
+        <Image src={logo} alt="DriveMad" class="size-12 rounded-md" />
+        <div class="leading-none">Drive <span class="text-[#ff950b] block font-bold">Mad</span></div>
       </a>
 
       <label class="swap swap-rotate btn btn-ghost btn-circle">
@@ -37,7 +41,7 @@
 <script>
   // Debug logging for theme changes
   const themeControllers = document.querySelectorAll('.theme-controller') as NodeListOf<HTMLInputElement>;
-  
+
   themeControllers.forEach(controller => {
     controller.addEventListener('change', (e) => {
       const isDark = (e.target as HTMLInputElement).checked;
@@ -50,4 +54,4 @@
       });
     });
   });
-</script> 
+</script>
