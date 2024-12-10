@@ -7,5 +7,8 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [
     tailwind()
-  ]
+  ],
+  experimental: {
+    contentIntellisense: true,
+  }
 });

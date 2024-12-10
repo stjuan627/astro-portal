@@ -10,7 +10,7 @@ export default {
 		},
 		extend: {
 			container: {
-				// center: true,
+				center: true,
 				padding: '1rem',
 			},
 			keyframes: {
@@ -24,7 +24,7 @@ export default {
 			},
 		},
 	},
-	plugins: [require("daisyui")],
+	plugins: [require("daisyui"), require('@tailwindcss/typography')],
 	daisyui: {
 		themes: ["emerald"],
 		darkTheme: "emerald",
