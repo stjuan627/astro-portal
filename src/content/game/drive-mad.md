@@ -4,7 +4,7 @@ description: 'Drive Mad is a free online driving game that challenges players wi
 game:
   title: 'Drive Mad'
   tagline: 'The Ultimate Driving Game Experience'
-  image: 'https://drive-mad.org/cache/data/image/game/drive-mad-game-m160x96.jpg'
+  image: '/images/drivemad-thumb.png'
   url: 'https://drive-mad-online.github.io/file/'
 ---
 
