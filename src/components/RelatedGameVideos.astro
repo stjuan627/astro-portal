@@ -4,6 +4,7 @@ interface Props {
   videos: {
     id: string;
     title: string;
+    date: string;
   }[];
 }
 
@@ -47,6 +48,7 @@ const getThumbnailUrl = (videoId: string) =>
           <h3 class="card-title text-sm" itemprop="name">
             {video.title}
           </h3>
+          <meta itemprop="uploadDate" content={video.date} />
           <meta itemprop="embedUrl" content={`https://www.youtube.com/embed/${video.id}`} />
         </div>
       </article>
