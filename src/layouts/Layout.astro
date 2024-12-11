@@ -19,12 +19,24 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html lang="en" class="min-h-screen" data-theme="light">
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QLWYMQ2E5"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2QLWYMQ2E5');
+    </script>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" href={favicon.src} type="image/x-icon">
-    <!-- <meta name="generator" content={Astro.generator} /> -->
     <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={favicon.src} />
+    <!-- <meta name="generator" content={Astro.generator} /> -->
     <ViewTransitions />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap">
   </head>

@@ -21,7 +21,7 @@ const { game } = Astro.props;
 const { Content, headings } = await render(game);
 ---
 
-<Layout title={game.data.title} description={game.data.tagline}>
+<Layout title={game.data.title} description={game.data.description}>
   <div class="space-y-8">
     <!-- Hero/Game Section -->
     <div class="container">
