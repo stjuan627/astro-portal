@@ -5,19 +5,26 @@ interface Props {
   badge?: string;
   rating?: number;
   href?: string;
+  key?: string;
 }
 
-const { title, imageUrl, badge, rating, href } = Astro.props;
+const { title, imageUrl, badge, rating, href, key } = Astro.props;
+
+const isAbsoluteUrl = href?.startsWith('http');
 
 console.debug('[Card] Rendering card:', { title, imageUrl, badge, rating });
 ---
 
 <div class="group relative overflow-hidden rounded-lg bg-base-100 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-  <a href={href} class="block">
+  <a href={isAbsoluteUrl ? '#' : href} class="game-card-link block"
+    target={isAbsoluteUrl ? '_blank' : '_self'}
+    rel={isAbsoluteUrl ? 'noreferrer nofollow' : ''}
+    id={key}
+    >
     <!-- 图片容器 -->
-    <div class="aspect-[16/9] overflow-hidden">
-      <img 
-        src={imageUrl} 
+    <div class="aspect-[16/9] overflow-hidden bg-gray-700">
+      <img
+        src={imageUrl}
         alt={title}
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         loading="lazy"
@@ -25,25 +32,36 @@ console.debug('[Card] Rendering card:', { title, imageUrl, badge, rating });
     </div>
 
     <!-- 内容区 -->
-    <div class="p-3">
+    <div class="">
       {badge && (
         <div class="badge badge-secondary absolute right-2 top-2 text-xs">
           {badge}
         </div>
       )}
 
-      {rating && (
+      <!-- {rating && (
         <div class="mb-1 flex items-center gap-1">
           <span class="text-md text-yellow-400 leading-none align-middle">★</span>
           <span class="text-xs text-base-content/70 leading-none align-middle">
             {rating.toFixed(1)}
           </span>
         </div>
-      )}
+      )} -->
 
-      <h3 class="text-xs font-medium leading-tight line-clamp-2 sm:text-sm">
+      <h3 class="px-2 py-1 text-xs font-medium w-full leading-tight line-clamp-2 sm:text-sm absolute left-0 bottom-0 hidden group-hover:bg-white/85 group-hover:block">
         {title}
       </h3>
     </div>
   </a>
-</div> 
+</div>
+
+<script>
+  document.querySelectorAll('.game-card-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = link.getAttribute('id');
+      console.debug('[Card] Clicked card:', id);
+      window.open(`https://play.fancade.com/${id}?max_w=999999&max_h=9999999&istart=1`, '_blank');
+    });
+  });
+</script>

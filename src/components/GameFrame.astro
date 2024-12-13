@@ -113,13 +113,10 @@ console.debug('[GameFrame] Initializing:', { gameUrl, title });
 // 游戏加载状态管理
 let isGameLoaded = false;
 
-// DOM 加载完成后绑定事件
 document.addEventListener('DOMContentLoaded', () => {
-  // 绑定开始游戏按钮
   const startBtn = document.querySelector('.start-game-btn');
   startBtn?.addEventListener('click', window.startGame);
 
-  // 绑定分享按钮
   document.querySelectorAll('[data-share]').forEach(btn => {
     btn.addEventListener('click', () => {
       const platform = btn.getAttribute('data-share');
@@ -140,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 绑定模式切换按钮
   document.querySelectorAll('[data-action]').forEach(btn => {
     btn.addEventListener('click', () => {
       const action = btn.getAttribute('data-action');
@@ -166,29 +162,22 @@ window.startGame = () => {
   const facade = container.querySelector('.facade-content');
   const spinner = container.querySelector('#loading-spinner');
 
-  // 显示加载动画
   spinner.classList.remove('hidden');
 
-  // 设置游戏URL并显示iframe
   iframe.src = gameUrl;
   iframe.classList.remove('hidden');
 
-  // 淡出facade
   facade.style.opacity = '0';
   facade.style.pointerEvents = 'none';
 };
 
-// 处理iframe加载完成
 window.handleGameLoaded = () => {
   if (!isGameLoaded) {
     console.debug('[GameFrame] Game loaded');
     const container = document.getElementById('game-container');
     const spinner = container.querySelector('#loading-spinner');
 
-    // 隐藏加载动画
     spinner.classList.add('hidden');
-
-    // 标记游戏已加载
     isGameLoaded = true;
   }
 };
@@ -220,10 +209,10 @@ function toggleLights() {
 
   if(html.getAttribute('data-theme') === 'dark') {
     html.setAttribute('data-theme', 'light');
-    btn.textContent = '关灯模式';
+    btn.textContent = 'Lights Off';
   } else {
     html.setAttribute('data-theme', 'dark');
-    btn.textContent = '开灯模式';
+    btn.textContent = 'Lights On';
   }
 }
 

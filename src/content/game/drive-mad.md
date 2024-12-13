@@ -1,11 +1,12 @@
 ---
 title: 'Drive Mad: The Ultimate Driving Game Experience'
-description: 'Drive Mad is a free online driving game that challenges players with increasingly difficult levels and obstacles. Play Drive Mad unblocked in your browser and test your driving skills through intense courses. This addictive driving game offers hours of entertainment with its unique physics-based challenges.'
+description: 'Drive Mad is a free online driving game that challenges players with increasingly difficult levels and obstacles. Play Drive Mad unblocked in your browser and test your driving skills through intense courses.'
 game:
   title: 'Drive Mad'
   tagline: 'The Ultimate Driving Game Experience'
   image: '/images/drivemad-thumb.png'
   url: 'https://drive-mad-online.github.io/file/'
+  showMods: true
 ---
 
 # Drive Mad: The Ultimate Driving Game Experience

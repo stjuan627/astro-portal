@@ -11,6 +11,7 @@ const game = defineCollection({
       tagline: z.string(),
       image: z.string(),
       url: z.string(),
+      showMods: z.boolean().optional(),
     }),
   }),
 });
