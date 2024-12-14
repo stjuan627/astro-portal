@@ -3,6 +3,7 @@ interface Props {
   gameUrl: string;
   title?: string;
   coverImage?: string;
+  featuredImage?: string;
   description?: string;
 }
 
@@ -10,6 +11,7 @@ const {
   gameUrl,
   title = 'Game Title',
   coverImage = '',
+  featuredImage = '',
   description = 'Game Description'
 } = Astro.props;
 
@@ -23,7 +25,7 @@ console.debug('[GameFrame] Initializing:', { gameUrl, title });
   <div class="aspect-[16/9] relative" id="game-container">
     <!-- Background Image -->
     <img
-      src={coverImage}
+      src={featuredImage || coverImage}
       alt={title}
       class="absolute inset-0 w-full h-full object-cover"
     />

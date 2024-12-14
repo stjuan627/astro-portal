@@ -10,6 +10,7 @@ const game = defineCollection({
       title: z.string(),
       tagline: z.string(),
       image: z.string(),
+      featuredImage: z.string().optional(),
       url: z.string(),
       showMods: z.boolean().optional(),
     }),

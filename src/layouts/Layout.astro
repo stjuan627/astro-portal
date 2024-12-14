@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+// import { ViewTransitions } from 'astro:transitions';
 import { getImage, Image } from 'astro:assets';
 import logo from '../assets/logo.png';
 import Header from '../components/Header.astro';
@@ -9,11 +9,12 @@ import '@phosphor-icons/web/regular';
 interface Props {
   title: string;
   description: string;
+  featuredImage: string;
 }
 
 const favicon = await getImage({ src: logo, width: 64 });
 
-const { title, description } = Astro.props;
+const { title, description, featuredImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,8 +36,20 @@ const { title, description } = Astro.props;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={favicon.src} />
-    <ViewTransitions />
+    <meta property="og:image" content={featuredImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:secure_url" content={featuredImage} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={featuredImage} />
+    <meta property="twitter:image:alt" content={title} />
+    <!-- <ViewTransitions /> -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap">
   </head>
   <body class="min-h-screen flex flex-col">
