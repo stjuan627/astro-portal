@@ -7,7 +7,7 @@ import { mockVideos } from '../../mocks/videoData';
 
 import { getCollection, render } from 'astro:content';
 import Card from '../../components/Card.astro';
-import mods from '../../data/mods.json'
+import { mods} from '../../data/mods'
 
 
 export async function getStaticPaths() {
@@ -25,7 +25,7 @@ const { Content, headings } = await render(game);
 <Layout title={game.data.title} description={game.data.description} featuredImage={game.data.game.featuredImage}>
   <div class="space-y-8">
     <!-- Hero/Game Section -->
-    <div class="container relative -mb-10 sm:-mb-20">
+    <div class="container relative">
       <div class="flex gap-4">
         <!-- <div class="flex-1 bg-blue-50"></div> -->
         <div class="w-full sm:w-2/3">
@@ -36,7 +36,7 @@ const { Content, headings } = await render(game);
             featuredImage={game.data.game.featuredImage}
             description={game.data.game.tagline} />
         </div>
-        <div class="hidden sm:block flex-1 ">
+        <!-- <div class="hidden sm:block flex-1 ">
           <div class="grid grid-cols-2 gap-4">
             {mods.slice(-10).map(mod => (
               <Card
@@ -47,7 +47,7 @@ const { Content, headings } = await render(game);
               />
             ))}
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
