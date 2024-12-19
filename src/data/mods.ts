@@ -473,11 +473,11 @@ export const mods = [
   },
   {
     "id": "63B475FD76DA7CA2",
-    "name": "Drive Mad 2r0",
+    "name": "Drive Mad 2",
     "author": "Gameoff",
     "href": "?DriveMad2r0",
     "img": "/games/drive-mad-2r0.jpg",
-    "key": "drive-mad-2r0"
+    "key": "drive-mad-2"
   },
   {
     "id": "654121CDEE0CD0C4",

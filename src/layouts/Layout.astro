@@ -1,5 +1,5 @@
 ---
-// import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { getImage, Image } from 'astro:assets';
 import logo from '../assets/logo.png';
 import Header from '../components/Header.astro';
@@ -50,7 +50,7 @@ const { title, description, featuredImage } = Astro.props;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={featuredImage} />
     <meta property="twitter:image:alt" content={title} />
-    <!-- <ViewTransitions /> -->
+    <ClientRouter />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap">
