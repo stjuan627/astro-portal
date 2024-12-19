@@ -7,10 +7,10 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://escaperoads.org',
   redirects: {
-    '/games/escape-road': {
-      status: 301,
-      destination: '/',
-    },
+    // '/games/escape-road': {
+    //   status: 301,
+    //   destination: '/',
+    // },
   },
   integrations: [
     tailwind()
