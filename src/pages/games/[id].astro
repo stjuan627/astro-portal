@@ -1,11 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import GameFrame from '../../components/GameFrame.astro';
-import { relatedGames } from '../../data/relatedGames';
 import RelatedGameVideos from '../../components/RelatedGameVideos.astro';
 import { mockVideos } from '../../mocks/videoData';
 
-import { getCollection, render } from 'astro:content';
+import { getCollection, getEntries, render } from 'astro:content';
 import Card from '../../components/Card.astro';
 import { mods} from '../../data/mods'
 
@@ -20,6 +19,8 @@ export async function getStaticPaths() {
 
 const { game } = Astro.props;
 const { Content, headings } = await render(game);
+const relatedGames = await getEntries(game.data.game.relatedGames ?? []);
+
 ---
 
 <Layout title={game.data.title} description={game.data.description} featuredImage={game.data.game.featuredImage}>
@@ -28,7 +29,7 @@ const { Content, headings } = await render(game);
     <div class="container relative">
       <div class="flex gap-4">
         <!-- <div class="flex-1 bg-blue-50"></div> -->
-        <div class="w-full sm:w-2/3">
+        <div class="w-full basis-3/4">
           <GameFrame
             gameUrl={game.data.game.url}
             title={game.data.game.title}
@@ -48,6 +49,18 @@ const { Content, headings } = await render(game);
             ))}
           </div>
         </div> -->
+        <div class="hidden sm:block flex-1 ">
+          <div class="grid gap-4">
+            {relatedGames.slice(-10).map((g: any) => (
+              <Card
+                title={`${g.data.game.title}`}
+                imageUrl={g.data.game.image || g.data.game.featuredImage}
+                href={`/games/${g.id}`}
+                key={g.id}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -60,44 +73,48 @@ const { Content, headings } = await render(game);
         </article>
       </section>
 
-      <section class="container">
-        <h2 class="mb-8 text-2xl font-bold">More Drive Mad Mods Unblocked</h2>
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      {game.data.game.showMods && (
+        <section class="container">
+          <h2 class="mb-8 text-2xl font-bold">More Drive Mad Mods Unblocked</h2>
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {mods.slice(0, -8).map(mod => (
             <Card
               title={`DriveMad - ${mod.name}`}
               imageUrl={mod.img}
               href={`https://play.fancade.com/${mod.id}?max_w=999999&max_h=9999999&istart=1`}
               key={mod.id}
-            />
-          ))}
-        </div>
-      </section>
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       <!-- Related Games Section -->
-      <!-- <section class="container">
+      <!-- {relatedGames.length > 0 && (
+      <section class="container mb-8">
         <h2 class="mb-8 text-2xl font-bold">Related Games</h2>
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {relatedGames.map(game => (
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 ">
+          {relatedGames.map((g: any) => (
             <Card
-              title={game.title}
-              imageUrl={game.imageUrl}
-              rating={game.rating}
-              badge={game.badge}
-              href={`/games/${game.id}`}
+              title={g.data.game.title}
+              imageUrl={g.data.game.image || g.data.game.featuredImage}
+              href={`/games/${g.id}`}
             />
           ))}
         </div>
-      </section> -->
+      </section>
+      )} -->
 
       <!-- Related Game Videos Section -->
-      <section class="container">
-        <h2 class="mb-8 text-2xl font-bold">Related Game Videos</h2>
-        <RelatedGameVideos
+      {game.data.game.youtubes && (
+        <section class="container">
+          <h2 class="mb-8 text-2xl font-bold">Related Game Videos</h2>
+          <RelatedGameVideos
           gameTitle="Drive Mad"
-          videos={mockVideos}
+          videos={game.data.game.youtubes}
         />
-      </section>
+        </section>
+      )}
 
     </div>
 

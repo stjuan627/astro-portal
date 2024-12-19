@@ -56,12 +56,12 @@ const isAbsoluteUrl = href?.startsWith('http');
 </div>
 
 <script>
-  document.querySelectorAll('.game-card-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = link.getAttribute('id');
-      console.debug('[Card] Clicked card:', id);
-      window.open(`https://play.fancade.com/${id}?max_w=999999&max_h=9999999&istart=1`, '_blank');
-    });
-  });
+  // document.querySelectorAll('.game-card-link').forEach(link => {
+  //   link.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     const id = link.getAttribute('id');
+  //     console.debug('[Card] Clicked card:', id);
+  //     window.open(`https://play.fancade.com/${id}?max_w=999999&max_h=9999999&istart=1`, '_blank');
+  //   });
+  // });
 </script>

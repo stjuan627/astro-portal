@@ -5,7 +5,13 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://drivemad.im',
+  site: 'https://escaperoads.org',
+  redirects: {
+    '/games/escape-road': {
+      status: 301,
+      destination: '/',
+    },
+  },
   integrations: [
     tailwind()
   ],
