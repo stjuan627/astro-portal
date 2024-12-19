@@ -83,6 +83,6 @@ const getThumbnailUrl = (videoId: string) =>
       });
     });
   }
-
-  document.addEventListener('astro:page-load', initializeVideoPlaceholders);
+  initializeVideoPlaceholders()
+  // document.addEventListener('astro:page-load', initializeVideoPlaceholders);
 </script>
